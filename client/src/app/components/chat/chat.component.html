@@ -1,0 +1,69 @@
+<div *ngIf="!username" class="col-lg-6">
+  <form name="userInputForm" (submit)="saveUsername()">
+    <div class="form-group">
+      <label class="control-label"><h4>Enter Username</h4></label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input [(ngModel)]="userInput" name="userInput" type="text" class="form-control" autocomplete="off">
+        <span class="input-group-btn">
+                  <button [disabled]="!userInput" class="btn btn-default" type="submit">Enter</button>
+                </span>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="username">
+  <div class="well">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <h3>Chat Window</h3>
+      </div>
+    </div>
+
+    <p *ngFor="let message of messages">
+      <strong><span class="glyphicon glyphicon-user"></span> {{ message.username }}</strong> {{message.text}}
+    </p>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="well bs-component">
+        <form class="form-horizontal" (submit)="sendMessage()">
+          <fieldset>
+            <legend>Message</legend>
+            <div class="form-group">
+              <label for="message" class="col-lg-2 control-label"><span class="glyphicon glyphicon-comment"></span></label>
+              <div class="col-lg-10">
+                <input [(ngModel)]="message" name="message" placeholder="enter message here" class="form-control" autocomplete="off" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button [disabled]="!message" type="submit" class="btn btn-lg btn-info">Send</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="well bs-component">
+        <form class="form-horizontal" (submit)="sendMessage()">
+          <fieldset>
+            <legend>Users Online</legend>
+            <div class="form-group">
+              <label for="message" class="col-lg-2 control-label"><span class="glyphicon glyphicon-user"></span></label>
+              <div class="col-lg-10">
+                <select multiple="" class="form-control">
+                                  <option *ngFor="let client of users">{{ client.username }}</option>
+                                </select>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
