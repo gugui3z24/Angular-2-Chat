@@ -1,6 +1,6 @@
 # Angular 2 Chat Application
 
-This is a simple chat applicaiton built with Angular 2 and Socket.io. Users message each other in real-time.
+This is a simple chat applicaiton built with Angular 2 and Socket.io. Users can message each other in real-time.
 
 
 ### Prerequisites
